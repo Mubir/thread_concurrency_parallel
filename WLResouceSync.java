@@ -1,9 +1,9 @@
-class WLResouceSync
-{
-	public static int counter = 0;
+class WLResouceSync {
+    public static int counter = 0;
 
     public static synchronized void counterMeth() {
         counter++;
+        
     }
 
     public static void noLocking() {
@@ -12,8 +12,10 @@ class WLResouceSync
 
             @Override
             public void run() {
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 1000; i++)
                     counterMeth();
+
+                    System.out.println("Thread 1 finished");
             }
         });
 
@@ -21,16 +23,24 @@ class WLResouceSync
 
             @Override
             public void run() {
-                for (int i = 0; i < 100; i++)
-                    counterMeth();
+                for (int i = 0; i < 1000; i++)
+                   { counterMeth(); 
+                    try{Thread.sleep(1); } catch(Exception e){ System.out.println(e);}
+                    
+                   }
+                    System.out.println("Thread 2 finished");
             }
+            
         });
 
         tr.start();
+        
         tr2.start();
         try {
             tr.join();
-            tr2.join();
+            System.out.println(" ************ ");
+             tr2.join();
+            
         } catch (InterruptedException exp) {
             exp.printStackTrace();
 

@@ -48,8 +48,8 @@ public class CounterULock {
             exp.printStackTrace();
 
         }
-        System.out.println(" The counter " + counter1);
-        System.out.println(" The counter " + counter2);
+        System.out.println(" The counter_1 " + counter1);
+        System.out.println(" The counter_2 " + counter2);
     }
 
     public static void main(String[] args) {

@@ -15,6 +15,7 @@ class Worker implements Runnable{
     public void run()
     {
         work();
+        // decrementing counter
         countDownLatch.countDown();
     }
 
